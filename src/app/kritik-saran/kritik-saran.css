@@ -1,0 +1,594 @@
+/* =============================================================
+   SCRUM - Subtask 1.2: Kerangka & Layout Halaman
+   SCRUM - Subtask 1.3: Komponen Form UI
+   SCRUM - Subtask 1.4: Peningkatan UX
+   File: kritik-saran.css
+   Deskripsi: Styling halaman Kritik dan Saran — palet warna
+   diselaraskan dengan sidebar (#2779a0 → #5aa8c8 → #b8d9ea)
+   ============================================================= */
+
+/* ========================
+   0. KEYFRAME ANIMASI AIR
+   ======================== */
+
+@keyframes bubble-rise {
+  0%   { transform: translateY(0) scale(1);       opacity: var(--bubble-op, 0.15); }
+  40%  { transform: translateY(-45vh) scale(1.08); opacity: calc(var(--bubble-op, 0.15) * 1.4); }
+  100% { transform: translateY(-110vh) scale(0.85); opacity: 0; }
+}
+
+@keyframes drop-float {
+  0%, 100% { transform: translateY(0px) scale(var(--drop-scale, 1)); }
+  50%       { transform: translateY(-16px) scale(calc(var(--drop-scale, 1) * 0.96)); }
+}
+
+@keyframes bubble-shimmer {
+  0%, 100% { box-shadow: inset -3px -3px 8px rgba(255,255,255,0.22), inset 2px 2px 5px rgba(255,255,255,0.12); }
+  50%       { box-shadow: inset -4px -4px 10px rgba(255,255,255,0.38), inset 3px 3px 7px rgba(255,255,255,0.22); }
+}
+
+@keyframes wave-shift {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes bg-pulse {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+/* ========================
+   1. LAYOUT HALAMAN
+   ======================== */
+.kritik-saran-page {
+  position: relative;
+  min-height: 100%;            /* Mengisi .main-content */
+  background: linear-gradient(
+    160deg,
+    #1a5c7a 0%,
+    #2779a0 30%,
+    #5aa8c8 65%,
+    #b8d9ea 100%
+  );
+  background-size: 300% 300%;
+  animation: bg-pulse 12s ease-in-out infinite;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1.75rem 1.25rem 6rem;
+  /* overflow tidak di-set agar gelembung bisa melayang keluar batas */
+}
+
+.kritik-saran-container {
+  width: 100%;
+  max-width: 660px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  z-index: 2;    /* Di atas .water-bg (z-index: 0) */
+}
+
+/* ========================
+   1b. LAPISAN ANIMASI AIR
+   ======================== */
+.water-bg {
+  /* Fixed: gelembung melayang di seluruh viewport, sampai ke paling atas */
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---- Gelembung ---- */
+.water-bubble {
+  position: absolute;
+  bottom: -10%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 35%,
+    rgba(255, 255, 255, 0.50),
+    rgba(184, 217, 234, 0.20) 50%,
+    rgba(87, 164, 197, 0.06)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  animation: bubble-rise linear infinite, bubble-shimmer 3s ease-in-out infinite;
+}
+
+/* ---- Tetesan ---- */
+.water-drop {
+  position: absolute;
+  width: 12px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.20);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform-origin: center bottom;
+  animation: drop-float ease-in-out infinite;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+}
+
+/* ---- Ombak SVG ---- */
+.wave-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 80px;
+  pointer-events: none;
+}
+.wave-layer svg { width: 100%; height: 100%; }
+
+.wave-layer--1 { bottom: 0px;  animation: wave-shift 7s linear infinite; }
+.wave-layer--1 path { fill: rgba(255,255,255,0.16); }
+
+.wave-layer--2 { bottom: 8px;  animation: wave-shift 11s linear infinite reverse; }
+.wave-layer--2 path { fill: rgba(255,255,255,0.09); }
+
+.wave-layer--3 { bottom: 16px; animation: wave-shift 17s linear infinite; }
+.wave-layer--3 path { fill: rgba(255,255,255,0.05); }
+
+/* ========================
+   2. HEADER HALAMAN
+   ======================== */
+.ks-header {
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-bottom: none;
+  border-radius: 1rem 1rem 0 0;
+  padding: 1.75rem 2rem 1.5rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.ks-header-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.ks-header-icon-drop {
+  color: #d6eef8;
+  opacity: 0.88;
+}
+
+.ks-header-icon-msg {
+  color: #ffffff;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.18));
+}
+
+.ks-header-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+}
+
+.ks-header-description {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #dff0f8;
+  max-width: 460px;
+  margin: 0 auto 1.25rem;
+}
+
+.ks-header-description strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* --- Indikator Langkah --- */
+.ks-header-steps {
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.ks-step-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  padding: 0.28rem 0.8rem 0.28rem 0.38rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #eaf5fb;
+}
+
+.ks-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  background: #ffffff;
+  color: #2779a0;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.ks-step-label { white-space: nowrap; }
+
+/* ========================
+   3. SEKSI FORM
+   ======================== */
+.ks-form-section {
+  background: #f4fafd;          /* Selaras dengan main-content #eaf4f9 */
+  border-radius: 0 0 1rem 1rem;
+  padding: 1.75rem 1.75rem 2rem;
+  box-shadow: 0 16px 48px rgba(26, 92, 122, 0.22);
+}
+
+.ks-form-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a5c7a;               /* Teal gelap */
+  margin-bottom: 1.35rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 2px solid #d6eef8;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ks-form-heading::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 1rem;
+  background: #2779a0;
+  border-radius: 2px;
+}
+
+/* ========================
+   4. LAYOUT FORM (GRID)
+   ======================== */
+.ks-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.ks-form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 520px) {
+  .ks-form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ========================
+   5. FIELD GROUP
+   ======================== */
+.ks-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.32rem;
+}
+
+.ks-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.835rem;
+  font-weight: 600;
+  color: #1a5c7a;
+}
+
+.ks-label-icon {
+  color: #2779a0;
+  flex-shrink: 0;
+}
+
+.ks-required {
+  color: #c0392b;
+  font-size: 0.88rem;
+  margin-left: 0.1rem;
+  line-height: 1;
+}
+
+/* --- Input, Select, Textarea --- */
+.ks-input,
+.ks-select,
+.ks-textarea {
+  width: 100%;
+  padding: 0.6rem 0.85rem;
+  border: 1.5px solid #c2dde9;
+  border-radius: 0.55rem;
+  font-size: 0.88rem;
+  color: #1e3a4a;
+  background-color: #ffffff;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+  outline: none;
+}
+
+.ks-input::placeholder,
+.ks-textarea::placeholder {
+  color: #8ab4c5;
+}
+
+.ks-input:focus,
+.ks-select:focus,
+.ks-textarea:focus {
+  border-color: #2779a0;
+  background-color: #fafdff;
+  box-shadow: 0 0 0 3px rgba(39, 121, 160, 0.15);
+}
+
+.ks-input:hover:not(:focus),
+.ks-select:hover:not(:focus),
+.ks-textarea:hover:not(:focus) {
+  border-color: #89c4d8;
+}
+
+/* --- Select --- */
+.ks-select-wrapper { position: relative; }
+.ks-select-wrapper::after {
+  content: "▾";
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #4a8fa8;
+  pointer-events: none;
+  font-size: 0.78rem;
+}
+
+.ks-select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 2.1rem;
+}
+
+/* --- Textarea --- */
+.ks-textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.ks-textarea-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.ks-field-hint {
+  font-size: 0.75rem;
+  color: #5a90a8;
+  line-height: 1.4;
+}
+
+.ks-char-counter {
+  font-size: 0.75rem;
+  color: #8ab4c5;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.ks-char-counter--warn {
+  color: #e67e22;
+  font-weight: 600;
+}
+
+/* ========================
+   6. AKSI FORM (TOMBOL)
+   ======================== */
+.ks-form-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.35rem;
+}
+
+.ks-required-note {
+  font-size: 0.78rem;
+  color: #5a90a8;
+}
+
+.ks-required-note span {
+  color: #c0392b;
+  font-weight: 700;
+}
+
+/* Tombol Submit — warna selaras teal sidebar */
+.ks-btn-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.48rem;
+  background: linear-gradient(135deg, #1a5c7a, #2779a0);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.65rem 1.6rem;
+  border-radius: 0.6rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+  box-shadow: 0 4px 14px rgba(39, 121, 160, 0.35);
+  flex-shrink: 0;
+}
+
+.ks-btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(39, 121, 160, 0.48);
+}
+
+.ks-btn-submit:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(39, 121, 160, 0.28);
+}
+
+.ks-btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ========================
+   7. INFO PRIVASI
+   ======================== */
+.ks-privacy-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.75rem 0.9rem;
+  background: #e8f5fb;
+  border: 1px solid #b5d9ec;
+  border-radius: 0.55rem;
+}
+
+.ks-privacy-icon {
+  color: #2779a0;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.ks-privacy-note p {
+  font-size: 0.78rem;
+  color: #1a5c7a;
+  line-height: 1.5;
+}
+
+.ks-privacy-note strong {
+  font-weight: 600;
+}
+
+/* =====================================================
+   DARK THEME OVERRIDES (SCRUM-305)
+   ===================================================== */
+
+body.dark-theme .kritik-saran-page {
+  background: linear-gradient(160deg, #0f172a 0%, #1e293b 40%, #1e3a5f 100%);
+}
+
+body.dark-theme .ks-header {
+  background: rgba(15, 23, 42, 0.4);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .ks-header-icon-drop {
+  color: #38bdf8;
+}
+
+body.dark-theme .ks-header-description {
+  color: #cbd5e1;
+}
+
+body.dark-theme .ks-step-item {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+}
+
+body.dark-theme .ks-step-num {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+body.dark-theme .ks-form-section {
+  background: #1e293b;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-theme .ks-form-heading {
+  color: #38bdf8;
+  border-bottom-color: #334155;
+}
+
+body.dark-theme .ks-form-heading::before {
+  background: #38bdf8;
+}
+
+body.dark-theme .ks-label {
+  color: #cbd5e1;
+}
+
+body.dark-theme .ks-label-icon {
+  color: #38bdf8;
+}
+
+body.dark-theme .ks-input,
+body.dark-theme .ks-select,
+body.dark-theme .ks-textarea {
+  background-color: #0f172a;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+body.dark-theme .ks-input::placeholder,
+body.dark-theme .ks-textarea::placeholder {
+  color: #64748b;
+}
+
+body.dark-theme .ks-input:focus,
+body.dark-theme .ks-select:focus,
+body.dark-theme .ks-textarea:focus {
+  border-color: #38bdf8;
+  background-color: rgba(15, 23, 42, 0.8);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+body.dark-theme .ks-input:hover:not(:focus),
+body.dark-theme .ks-select:hover:not(:focus),
+body.dark-theme .ks-textarea:hover:not(:focus) {
+  border-color: #475569;
+}
+
+body.dark-theme .ks-select-wrapper::after {
+  color: #64748b;
+}
+
+body.dark-theme .ks-field-hint {
+  color: #94a3b8;
+}
+
+body.dark-theme .ks-char-counter {
+  color: #64748b;
+}
+
+body.dark-theme .ks-required-note {
+  color: #94a3b8;
+}
+
+body.dark-theme .ks-btn-submit {
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+body.dark-theme .ks-btn-submit:hover {
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.48);
+}
+
+body.dark-theme .ks-privacy-note {
+  background: rgba(15, 23, 42, 0.5);
+  border-color: #334155;
+}
+
+body.dark-theme .ks-privacy-icon {
+  color: #38bdf8;
+}
+
+body.dark-theme .ks-privacy-note p {
+  color: #94a3b8;
+}
+

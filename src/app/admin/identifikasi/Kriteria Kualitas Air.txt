@@ -1,0 +1,15 @@
+Kriteria Kualitas Air (Panca Indra)
+1. Warna
+Warna air adalah indikator visual paling utama untuk menentukan apakah air tercemar atau tidak.
+- Air Layak (Normal): Jernih dan tidak berwarna (bening).
+- Kuning/Kecokelatan: Biasanya menandakan kadar zat besi atau mangan yang tinggi, atau adanya endapan lumpur/tanah.
+- Keputihan/Keruh: Bisa menandakan adanya kandungan kapur, gas terlarut, atau partikel tersuspensi yang halus.
+- Berwarna Gelap: Menandakan adanya pencemaran limbah organik yang membusuk atau kandungan logam berat yang tinggi.
+
+2. Bau
+Indra penciuman sangat sensitif terhadap perubahan kimiawi dalam air.
+- Air Layak (Normal): Tidak berbau sama sekali (netral).
+- Bau Amis/Busuk: Indikasi adanya zat organik yang membusuk atau pertumbuhan bakteri/alga yang berlebihan.
+- Bau Seperti Tanah/Apek: Sering terjadi pada air sumur yang kurang sirkulasi atau tercemar limpasan air hujan yang membawa tanah.
+- Bau Klorin (Pemutih): Umum pada air PDAM (normal jika tidak terlalu menyengat), namun jika terlalu kuat bisa menyebabkan iritasi.
+- Bau Bahan Kimia: Indikasi adanya kebocoran limbah industri atau sisa bahan bakar/minyak yang masuk ke sumber air.

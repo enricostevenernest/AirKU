@@ -1,0 +1,624 @@
+/* =====================================================
+   AIR KU — EDUKASI PAGE
+   FIXED FOR LIGHT & DARK THEME
+   ===================================================== */
+
+/* =====================================================
+   GLOBAL LAYOUT
+   ===================================================== */
+
+.edukasi-page {
+  min-height: 100vh;
+  background: #eaf4f9;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  color: #1a3a4a;
+}
+
+.edukasi-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 34px 30px 50px;
+}
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.edukasi-header {
+  margin-bottom: 26px;
+}
+
+.back-button {
+  background: transparent;
+  border: none;
+  color: #2e86ab;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 12px;
+  font-family: inherit;
+  transition: opacity 0.15s ease;
+}
+
+.back-button:hover {
+  opacity: 0.72;
+}
+
+.edukasi-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a516b;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* =====================================================
+   SEARCH
+   ===================================================== */
+
+.search-wrapper {
+  margin-bottom: 20px;
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 14px 50px 14px 18px;
+  border-radius: 14px;
+  border: 1px solid #d4e3eb;
+  background: rgba(255, 255, 255, 0.96);
+  font-size: 0.88rem;
+  color: #333;
+  outline: none;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.18s ease;
+  font-family: inherit;
+}
+
+.search-input::placeholder {
+  color: #8aa1ad;
+}
+
+.search-input:focus {
+  border-color: #2e86ab;
+  box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.12);
+}
+
+.search-clear {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: #9aa8b1;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.search-clear:hover {
+  color: #555;
+}
+
+/* =====================================================
+   FILTER KATEGORI & FAVORIT
+   ===================================================== */
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.category-button {
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: none;
+  background: #d0eaf8;
+  color: #1a5f7a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.16s ease;
+  font-family: inherit;
+}
+
+.category-button:hover {
+  background: #b7ddf2;
+  transform: translateY(-1px);
+}
+
+.category-button.active {
+  background: #1a516b;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(26, 81, 107, 0.16);
+}
+
+.filter-spacer {
+  flex: 1;
+}
+
+.favorite-toggle {
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.favorite-toggle.inactive {
+  background: transparent;
+  color: #1a516b;
+  border: 1.5px solid #9fc5d7;
+}
+
+.favorite-toggle.inactive:hover {
+  background: #dceef7;
+}
+
+.favorite-toggle.active {
+  background: #fff3cd;
+  color: #856404;
+  border: 1.5px solid #f5c842;
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.15);
+}
+
+/* =====================================================
+   GRID
+   ===================================================== */
+
+.edukasi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 22px;
+}
+
+/* =====================================================
+   CARD
+   ===================================================== */
+
+.edukasi-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.edukasi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.favorite-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.14s ease,
+    background 0.14s ease;
+}
+
+.favorite-button:hover {
+  transform: scale(1.08);
+  background: #fff;
+}
+
+.card-image {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  background: #dceef7;
+}
+
+.card-content {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: #fff;
+}
+
+.card-category {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  width: fit-content;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: #d0eaf8;
+  color: #1a5f7a;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2f39;
+  line-height: 1.45;
+  margin: 0 0 10px;
+}
+
+.card-description {
+  font-size: 0.82rem;
+  color: #6b7c85;
+  line-height: 1.75;
+  margin: 0;
+  flex: 1;
+}
+
+.card-readmore {
+  margin-top: 18px;
+  border: none;
+  background: transparent;
+  color: #2e86ab;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  align-self: flex-start;
+  font-family: inherit;
+  transition: opacity 0.15s ease;
+}
+
+.card-readmore:hover {
+  opacity: 0.72;
+}
+
+/* =====================================================
+   DETAIL ARTICLE
+   ===================================================== */
+
+.article-detail {
+  background: #fff;
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.article-back {
+  border: none;
+  background: transparent;
+  color: #2e86ab;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 16px;
+  font-family: inherit;
+}
+
+.article-back:hover {
+  opacity: 0.75;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a516b;
+  line-height: 1.35;
+  margin: 0 0 12px;
+}
+
+.article-category {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #d0eaf8;
+  color: #1a5f7a;
+  font-size: 0.74rem;
+  font-weight: 700;
+  margin-bottom: 22px;
+  line-height: 1.4;
+}
+
+.article-image {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 24px;
+}
+
+.article-content {
+  font-size: 0.94rem;
+  color: #4d5c65;
+  line-height: 1.9;
+  white-space: pre-line;
+}
+
+/* =====================================================
+   EMPTY / LOADING
+   ===================================================== */
+
+.empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 180px;
+  border-radius: 14px;
+  border: 2px dashed #b8d9ea;
+  background: rgba(255, 255, 255, 0.55);
+  text-align: center;
+  padding: 24px;
+}
+
+.empty-state p {
+  margin: 0;
+  color: #7d919d;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.loading-text {
+  text-align: center;
+  padding: 30px 0;
+  color: #1a516b;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+/* =====================================================
+   LIST FIX
+   ===================================================== */
+
+.article-content ul,
+.article-content ol {
+  padding-left: 28px !important;
+  margin: 10px 0 !important;
+  list-style-position: outside !important;
+}
+
+.article-content ul {
+  list-style-type: disc !important;
+}
+
+.article-content ol {
+  list-style-type: decimal !important;
+}
+
+.article-content li {
+  display: list-item !important;
+  margin-bottom: 6px !important;
+}
+
+.article-content li::marker {
+  color: #1a516b;
+  font-weight: 700;
+}
+
+/* =====================================================
+   DARK THEME OVERRIDES
+   mengikuti sistem body.dark-theme dari project
+   ===================================================== */
+
+body.dark-theme .edukasi-page {
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .edukasi-container {
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .edukasi-title,
+body.dark-theme .article-title {
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .back-button,
+body.dark-theme .article-back,
+body.dark-theme .card-readmore {
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .search-input {
+  background: rgba(30, 41, 59, 0.95) !important;
+  border-color: #334155 !important;
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+}
+
+body.dark-theme .search-input::placeholder {
+  color: #94a3b8 !important;
+  -webkit-text-fill-color: #94a3b8 !important;
+}
+
+body.dark-theme .search-input:focus {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2) !important;
+}
+
+body.dark-theme .search-clear {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .category-button {
+  background: #1e293b !important;
+  border: 1px solid #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+body.dark-theme .category-button:hover {
+  background: #334155 !important;
+}
+
+body.dark-theme .category-button.active {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+
+body.dark-theme .favorite-toggle.inactive {
+  background: transparent !important;
+  color: #cbd5e1 !important;
+  border-color: #334155 !important;
+}
+
+body.dark-theme .favorite-toggle.inactive:hover {
+  background: #334155 !important;
+}
+
+body.dark-theme .favorite-toggle.active {
+  background: #422006 !important;
+  color: #fde68a !important;
+  border-color: #f59e0b !important;
+}
+
+body.dark-theme .edukasi-card,
+body.dark-theme .article-detail {
+  background: #1e293b !important;
+  color: #e2e8f0 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-theme .card-content {
+  background: #1e293b !important;
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .card-title {
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .card-description {
+  color: #cbd5e1 !important;
+}
+
+body.dark-theme .card-category,
+body.dark-theme .article-category {
+  background: #172554 !important;
+  color: #93c5fd !important;
+}
+
+body.dark-theme .favorite-button {
+  background: rgba(30, 41, 59, 0.95) !important;
+  color: #fde68a !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35) !important;
+}
+
+body.dark-theme .article-content,
+body.dark-theme .article-content * {
+  color: #cbd5e1 !important;
+}
+
+body.dark-theme .article-content li::marker {
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .empty-state {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+body.dark-theme .empty-state p,
+body.dark-theme .loading-text {
+  color: #cbd5e1 !important;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 900px) {
+  .edukasi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .article-detail {
+    padding: 24px;
+  }
+
+  .article-title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .edukasi-container {
+    padding: 22px 16px 40px;
+  }
+
+  .edukasi-title {
+    font-size: 1.55rem;
+  }
+
+  .filter-row {
+    align-items: stretch;
+  }
+
+  .category-button {
+    flex: 1;
+    text-align: center;
+    padding: 9px 14px;
+  }
+
+  .filter-spacer {
+    display: none;
+  }
+
+  .favorite-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .article-detail {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .article-title {
+    font-size: 1.35rem;
+  }
+
+  .article-category {
+    font-size: 0.68rem;
+    padding: 5px 12px;
+  }
+
+  .card-image {
+    height: 190px;
+  }
+
+  .card-category {
+    font-size: 0.66rem;
+    padding: 4px 10px;
+  }
+}

@@ -1,0 +1,641 @@
+/* =======================================================
+   PAGE
+======================================================= */
+
+.berita-page {
+  min-height: 100vh;
+  background: #f0f6fb;
+  padding: 32px;
+}
+
+.berita-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.page-subtitle {
+  font-size: 11px;
+  font-weight: 700;
+  color: #0369a1;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #0d2137;
+  margin-bottom: 6px;
+}
+
+.page-description {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.count-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 18px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: #0d2137;
+}
+
+/* =======================================================
+   SEARCH SECTION
+======================================================= */
+
+.toolbar {
+  background: white;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  padding: 18px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+
+.toolbar-row {
+  display: flex;
+  gap: 12px;
+}
+
+.search-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  padding: 12px 16px;
+}
+
+.search-box input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #334155;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-width: 140px;
+
+  background: #0369a1;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  padding: 12px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .25s;
+
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: #025580;
+}
+
+/* =======================================================
+   FILTER
+======================================================= */
+
+.kategori-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.kategori-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: .25s;
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.kategori-btn.active {
+  background: #0369a1;
+  color: white;
+}
+
+/* =======================================================
+   GRID
+======================================================= */
+
+.berita-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+/* =======================================================
+   CARD
+======================================================= */
+
+.berita-card {
+  background: white;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  transition: .3s;
+
+  display: flex;
+  flex-direction: column;
+
+  height: 420px;
+}
+
+.berita-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.08);
+}
+
+.card-content {
+  padding: 18px;
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0d2137;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.card-description {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #64748b;
+
+  overflow: hidden;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+
+  min-height: 95px;
+}
+
+.card-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: auto;
+}
+
+.card-footer {
+  display: flex;
+  gap: 10px;
+  padding: 16px;
+  border-top: 1px solid #f1f5f9;
+  background: #fafafa;
+}
+
+.btn-secondary {
+  flex: 1;
+  border: none;
+  border-radius: 12px;
+  background: #e2e8f0;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-edit {
+  flex: 1;
+  border: none;
+  border-radius: 12px;
+  background: #0369a1;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* =======================================================
+   BERITA MODAL
+======================================================= */
+
+.berita-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  background: rgba(0,0,0,.45);
+  backdrop-filter: blur(4px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 24px;
+}
+
+.berita-modal {
+  width: 100%;
+  max-width: 900px;
+
+  max-height: 90vh;
+
+  background: white;
+  border-radius: 28px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  box-shadow: 0 24px 60px rgba(0,0,0,.25);
+}
+
+.berita-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 28px 32px;
+
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.berita-modal-subtitle {
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  color: #0369a1;
+}
+
+.berita-modal-title {
+  font-size: 28px;
+  font-weight: 800;
+
+  color: #0d2137;
+
+  margin-top: 4px;
+}
+
+
+
+.berita-modal-form {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+  min-height: 0;
+}
+
+.berita-modal-body {
+  flex: 1;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding: 28px 32px;
+
+  min-height: 0;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.form-field {
+  margin-bottom: 22px;
+}
+
+.form-field label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  color: #334155;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+
+  padding: 14px 16px;
+
+  background: #f8fafc;
+
+  font-size: 15px;
+
+  outline: none;
+
+  transition: .25s;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #0369a1;
+
+  box-shadow:
+    0 0 0 4px rgba(3,105,161,.12);
+}
+
+.form-textarea {
+  min-height: 240px;
+  resize: vertical;
+
+  line-height: 1.8;
+}
+
+.berita-modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px 32px;
+
+  border-top: 1px solid #e2e8f0;
+
+  background: #fafafa;
+}
+
+.footer-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-delete {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border: none;
+  background: transparent;
+
+  color: #dc2626;
+
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  border: 1px solid #cbd5e1;
+
+  background: white;
+
+  padding: 12px 22px;
+
+  border-radius: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.btn-save {
+  border: none;
+
+  background: #0369a1;
+  color: white;
+
+  padding: 12px 24px;
+
+  border-radius: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.btn-save:hover {
+  background: #025580;
+}
+/* =======================================================
+   FORM
+======================================================= */
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.form-control {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  padding: 12px 14px;
+  background: #f8fafc;
+  outline: none;
+}
+
+.form-control:focus {
+  border-color: #0369a1;
+  box-shadow: 0 0 0 3px rgba(3,105,161,.15);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 12px;
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* =======================================================
+   DETAIL MODAL
+======================================================= */
+
+.detail-modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  background: rgba(0,0,0,.45);
+
+  backdrop-filter: blur(5px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 24px;
+}
+
+.detail-modal {
+  width: 100%;
+  max-width: 900px;
+
+  max-height: 90vh;
+
+  background: white;
+
+  border-radius: 28px;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 24px 60px rgba(0,0,0,.25);
+}
+
+.detail-accent {
+  height: 8px;
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  padding: 28px 32px 20px;
+
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.detail-subtitle {
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  color: #0369a1;
+
+  margin-bottom: 8px;
+}
+
+.detail-title {
+  font-size: 28px;
+
+  font-weight: 800;
+
+  color: #0d2137;
+
+  line-height: 1.4;
+}
+
+
+
+.detail-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  padding: 20px 32px;
+
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.detail-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+.detail-content {
+  flex: 1;
+
+  overflow-y: auto;
+
+  padding: 28px 32px;
+
+  color: #334155;
+
+  font-size: 15px;
+
+  line-height: 2;
+
+  white-space: pre-wrap;
+}
+
+.detail-footer {
+  padding: 20px 32px;
+
+  border-top: 1px solid #e2e8f0;
+
+  background: #fafafa;
+}
+
+.detail-btn-close {
+  width: 100%;
+
+  border: none;
+
+  background: #0369a1;
+
+  color: white;
+
+  padding: 14px;
+
+  border-radius: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .25s;
+}
+
+.detail-btn-close:hover {
+  background: #025580;
+}

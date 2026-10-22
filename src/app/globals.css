@@ -1,0 +1,927 @@
+@import "tailwindcss";
+
+/* Global Reset & Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+}
+
+/* SCRUM-115: Base styles untuk konsistensi rendering < 2 detik di semua browser */
+html,
+body {
+  min-height: 100%;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Smooth navigation antar halaman */
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* =====================================================
+   DARK THEME — GLOBAL OVERRIDES (SCRUM-305)
+   Berlaku untuk semua halaman termasuk Tailwind CSS
+   ===================================================== */
+
+body.dark-theme {
+  --background: #0f172a;
+  --foreground: #e2e8f0;
+  background-color: #0f172a !important;
+  color: #e2e8f0;
+}
+
+/* Smooth color transitions */
+body *, body {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ---- Tailwind bg overrides ---- */
+body.dark-theme .bg-white { background-color: #1e293b !important; }
+body.dark-theme .bg-slate-50 { background-color: #1e293b !important; }
+body.dark-theme .bg-slate-100 { background-color: #0f172a !important; }
+body.dark-theme .bg-slate-200 { background-color: #1e293b !important; }
+
+/* ---- Tailwind text overrides ---- */
+body.dark-theme .text-slate-800 { color: #e2e8f0 !important; }
+body.dark-theme .text-slate-700 { color: #cbd5e1 !important; }
+body.dark-theme .text-slate-600 { color: #94a3b8 !important; }
+body.dark-theme .text-slate-500 { color: #64748b !important; }
+body.dark-theme .text-slate-400 { color: #475569 !important; }
+body.dark-theme .text-3xl.font-black.text-slate-800 { color: #e2e8f0 !important; }
+
+/* ---- Tailwind border overrides ---- */
+body.dark-theme .border-slate-100 { border-color: #334155 !important; }
+body.dark-theme .border-slate-200 { border-color: #334155 !important; }
+body.dark-theme .border-slate-300 { border-color: #475569 !important; }
+
+/* ---- Colored accent backgrounds ---- */
+body.dark-theme .bg-sky-50 { background-color: #0c2a3d !important; }
+body.dark-theme .text-sky-600 { color: #38bdf8 !important; }
+body.dark-theme .bg-indigo-50 { background-color: #1e1b4b !important; }
+body.dark-theme .text-indigo-600 { color: #818cf8 !important; }
+body.dark-theme .bg-emerald-50 { background-color: #0d2b0d !important; }
+body.dark-theme .text-emerald-700 { color: #4ade80 !important; }
+
+/* ---- Vendor page card body ---- */
+body.dark-theme .group.bg-white {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+body.dark-theme .bg-slate-50\/50 {
+  background-color: rgba(15,23,42,0.6) !important;
+}
+body.dark-theme hr.border-slate-100 { border-color: #334155 !important; }
+
+/* ---- Select & Input (Vendor filter bar) ---- */
+body.dark-theme select {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+body.dark-theme select option {
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+body.dark-theme input[type="text"],
+body.dark-theme input[type="search"],
+body.dark-theme input[type="email"],
+body.dark-theme input[type="password"] {
+  background-color: rgba(30,41,59,0.95) !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+body.dark-theme input::placeholder { color: #64748b !important; }
+
+/* ---- Control bar wrapper ---- */
+body.dark-theme .flex.flex-col.xl\\:flex-row.bg-white {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+/* ---- Inactive tab/button in vendor ---- */
+body.dark-theme button.text-slate-500 { color: #64748b !important; }
+body.dark-theme button.text-slate-600 { color: #94a3b8 !important; }
+
+/* ---- Card action buttons (Copy, Call, Maps) ---- */
+body.dark-theme .h-10.rounded-lg.border.border-slate-200.bg-white {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #94a3b8 !important;
+}
+
+/* ---- Hover states ---- */
+body.dark-theme .hover\:bg-slate-100:hover { background-color: #334155 !important; }
+body.dark-theme .hover\:bg-slate-50:hover { background-color: #1e293b !important; }
+body.dark-theme .hover\:shadow-lg:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important; }
+
+/* ---- Loading/empty boxes ---- */
+body.dark-theme .rounded-2xl.p-16.text-center.border.border-slate-100 {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #64748b !important;
+}
+
+/* ---- Berita & News panel ---- */
+body.dark-theme .riwayat-list.bg-white,
+body.dark-theme div[style*="background: #fff"],
+body.dark-theme div[style*="background: \"#fff\""] {
+  background-color: #1e293b !important;
+}
+body.dark-theme .riwayat-item { background: #1e293b !important; border-color: #334155 !important; }
+body.dark-theme .riwayat-item span { color: #cbd5e1 !important; }
+
+/* ---- Avatar circle (admin sidebar) ---- */
+body.dark-theme div[style*="background: #2c3e50"] {
+  background: #1e3a5f !important;
+}
+
+/* ---- Inline style overrides untuk div dengan bg putih hardcoded ---- */
+body.dark-theme [style*="background: #fff"],
+body.dark-theme [style*="background:#fff"],
+body.dark-theme [style*="background: white"],
+body.dark-theme [style*="background-color: #fff"],
+body.dark-theme [style*="background-color: white"],
+body.dark-theme [style*="background: rgb(255, 255, 255)"],
+body.dark-theme [style*="background-color: rgb(255, 255, 255)"] {
+  background-color: #1e293b !important;
+}
+body.dark-theme [style*="color: #222"],
+body.dark-theme [style*="color: #333"],
+body.dark-theme [style*="color: #444"],
+body.dark-theme [style*="color: #555"],
+body.dark-theme [style*="color: rgb(51, 51, 51)"],
+body.dark-theme [style*="color: rgb(68, 68, 68)"] {
+  color: #e2e8f0 !important;
+}
+body.dark-theme [style*="color: #666"],
+body.dark-theme [style*="color: #777"],
+body.dark-theme [style*="color: #888"],
+body.dark-theme [style*="color: #999"],
+body.dark-theme [style*="color: rgb(153, 153, 153)"] {
+  color: #94a3b8 !important;
+}
+body.dark-theme [style*="color: #aaa"],
+body.dark-theme [style*="color: #bbb"],
+body.dark-theme [style*="color: rgb(170, 170, 170)"] {
+  color: #64748b !important;
+}
+body.dark-theme [style*="background: #f8f"] {
+  background-color: #1e293b !important;
+}
+body.dark-theme [style*="background: #eaf"] {
+  background-color: #0f172a !important;
+}
+body.dark-theme [style*="background: #f5f5f5"],
+body.dark-theme [style*="background: #fafcfd"],
+body.dark-theme [style*="background: #f8fafc"],
+body.dark-theme [style*="background: #f7fbfd"],
+body.dark-theme [style*="background: rgb(248, 250, 252)"],
+body.dark-theme [style*="background-color: rgb(248, 250, 252)"] {
+  background-color: #1e293b !important;
+}
+body.dark-theme [style*="border-bottom: 1px solid #f0f0f0"] {
+  border-bottom-color: #334155 !important;
+}
+body.dark-theme [style*="border: 1px solid #e1ecf2"],
+body.dark-theme [style*="border: 1px solid #eee"],
+body.dark-theme [style*="border: 1px solid #dcdcdc"] {
+  border-color: #334155 !important;
+}
+
+/* ---- Custom Header Background for Vendor ---- */
+.vendor-header-bg {
+  background: linear-gradient(135deg, #1f7aa5 0%, #5aa8c8 55%, #b8d9ea 100%);
+}
+
+body.dark-theme .vendor-header-bg {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%) !important;
+}
+
+body.dark-theme [class*="bg-[#f4f9f9]"] {
+  background-color: #0f172a !important;
+}
+
+body.dark-theme [class*="from-[#97d5f9]"] {
+  background-image: linear-gradient(to right, #1e3a5f, #0f172a) !important;
+}
+
+body.dark-theme [class*="text-[#2e86ab]"] {
+  color: #38bdf8 !important;
+}
+
+body.dark-theme [class*="text-blue-600"],
+body.dark-theme [class*="text-green-600"],
+body.dark-theme [class*="text-purple-600"] {
+  color: #93c5fd !important;
+}
+
+body.dark-theme .bg-gray-50,
+body.dark-theme .bg-gray-50\/50,
+body.dark-theme .bg-gray-200 {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .text-gray-500,
+body.dark-theme .text-gray-400 {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .border-gray-200 {
+  border-color: #334155 !important;
+}
+
+body.dark-theme .bg-red-50 {
+  background-color: #450a0a !important;
+  border-color: #7f1d1d !important;
+}
+
+body.dark-theme .bg-red-500 {
+  background-color: #991b1b !important;
+}
+
+body.dark-theme .bg-green-500 {
+  background-color: #166534 !important;
+}
+
+body.dark-theme th.bg-gray-50,
+body.dark-theme td.border-b {
+  border-color: #334155 !important;
+}
+
+body.dark-theme tr.hover\:bg-gray-50:hover {
+  background-color: #334155 !important;
+}
+
+body.dark-theme .bg-\[\#2e86ab\] {
+  background-color: #1e3a5f !important;
+}
+
+/* ===================================================
+   DARK THEME OVERRIDES (GLOBAL & ADMIN)
+   =================================================== */
+
+body.dark-theme .main-content,
+body.dark-theme .berita-page,
+body.dark-theme .admin-edukasi-page,
+body.dark-theme .admin-maps-container,
+body.dark-theme .identifikasi-page,
+body.dark-theme .detail-page,
+body.dark-theme .maintenance-page {
+  background-color: #0f172a !important;
+}
+
+body.dark-theme .page-subtitle,
+body.dark-theme .detail-subtitle,
+body.dark-theme .welcome-sub {
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .page-title,
+body.dark-theme .artikel-title,
+body.dark-theme .detail-title,
+body.dark-theme .welcome-title,
+body.dark-theme .admin-title,
+body.dark-theme h1,
+body.dark-theme h2 {
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .page-description,
+body.dark-theme .artikel-desc,
+body.dark-theme .detail-content,
+body.dark-theme .filter-title,
+body.dark-theme .card-description,
+body.dark-theme .admin-subtitle {
+  color: #cbd5e1 !important;
+}
+
+body.dark-theme .welcome-card,
+body.dark-theme .toolbar,
+body.dark-theme .berita-card,
+body.dark-theme .card-footer,
+body.dark-theme .berita-modal,
+body.dark-theme .detail-modal,
+body.dark-theme .detail-footer,
+body.dark-theme .berita-modal-footer,
+body.dark-theme .admin-card,
+body.dark-theme .map-section,
+body.dark-theme .table-section,
+body.dark-theme .stat-card,
+body.dark-theme .filter-card,
+body.dark-theme .artikel-card,
+body.dark-theme .detail-card,
+body.dark-theme .schedule-card,
+body.dark-theme .empty-state {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
+}
+
+/* ===================================================
+   TAILWIND UTILITIES & VENDOR ADMIN OVERRIDES
+   =================================================== */
+
+body.dark-theme .bg-slate-50,
+body.dark-theme .bg-slate-100 {
+  background-color: #0f172a !important;
+}
+
+body.dark-theme .bg-white {
+  background-color: #1e293b !important;
+}
+
+body.dark-theme .vendor-header-bg {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+}
+
+body.dark-theme .text-slate-800,
+body.dark-theme .text-slate-700 {
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .text-slate-600,
+body.dark-theme .text-slate-500,
+body.dark-theme .text-slate-400 {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .border-slate-100,
+body.dark-theme .border-slate-200 {
+  border-color: #334155 !important;
+}
+
+body.dark-theme .bg-emerald-50,
+body.dark-theme .bg-sky-50,
+body.dark-theme .bg-indigo-50 {
+  background-color: rgba(3, 105, 161, 0.2) !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .text-emerald-700,
+body.dark-theme .text-sky-600,
+body.dark-theme .text-indigo-600 {
+  color: #38bdf8 !important;
+}
+
+/* ===================================================
+   FEEDBACK ADMIN OVERRIDES
+   =================================================== */
+
+.feedback-error-banner {
+  color: #c62828;
+  background: #fde8e8;
+}
+.feedback-error-btn {
+  background: #fff;
+  color: #c62828;
+}
+
+.feedback-card.unread { background: #fff; }
+.feedback-card.read { background: #fafcfd; }
+
+.feedback-avatar.unread { background: #e0f2f9; color: #1a516b; }
+.feedback-avatar.read { background: #f0f0f0; color: #999; }
+
+.feedback-card-title { color: #222; }
+.feedback-date { color: #888; }
+.feedback-content-box { background: #f8f9fa; }
+.feedback-content-text { color: #444; }
+
+.feedback-search-input,
+.feedback-filter-select {
+  background: #fff;
+  color: #444;
+}
+
+body.dark-theme .feedback-error-banner {
+  background: #450a0a !important;
+  color: #fca5a5 !important;
+}
+body.dark-theme .feedback-error-btn {
+  background: #7f1d1d !important;
+  color: #fca5a5 !important;
+  border-color: #ef4444 !important;
+}
+
+body.dark-theme .feedback-card.unread { background: #1e293b !important; }
+body.dark-theme .feedback-card.read { background: #0f172a !important; }
+
+body.dark-theme .feedback-avatar.unread { background: #0369a1 !important; color: #e2e8f0 !important; }
+body.dark-theme .feedback-avatar.read { background: #334155 !important; color: #94a3b8 !important; }
+
+body.dark-theme .feedback-card-title { color: #e2e8f0 !important; }
+body.dark-theme .feedback-date { color: #94a3b8 !important; }
+body.dark-theme .feedback-content-box { background: #1e293b !important; border-color: #334155 !important; }
+body.dark-theme .feedback-content-text { color: #cbd5e1 !important; }
+
+body.dark-theme .feedback-search-input,
+body.dark-theme .feedback-filter-select {
+  background: rgba(30,41,59,0.95) !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+
+body.dark-theme .search-input-wrapper,
+body.dark-theme .search-box {
+  background-color: rgba(30,41,59,0.95) !important;
+  border-color: #334155 !important;
+}
+
+body.dark-theme .search-input,
+body.dark-theme .panduan-search-input,
+body.dark-theme .search-box input,
+body.dark-theme .form-input,
+body.dark-theme .form-textarea,
+body.dark-theme .admin-search-input,
+body.dark-theme .admin-form-input,
+body.dark-theme .filter-select {
+  background-color: transparent !important;
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .search-input-wrapper svg,
+body.dark-theme .search-box svg {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .kategori-item,
+body.dark-theme .kategori-btn,
+body.dark-theme .btn-secondary {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+body.dark-theme .kategori-item:hover,
+body.dark-theme .kategori-btn:hover {
+  border-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .kategori-item.active,
+body.dark-theme .kategori-btn.active {
+  background-color: #0369a1 !important;
+  border-color: #0369a1 !important;
+  color: #fff !important;
+}
+
+
+
+body.dark-theme .artikel-header h2 {
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .artikel-count {
+  background-color: #1e293b !important;
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .artikel-category {
+  background-color: #0f172a !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .artikel-link,
+body.dark-theme .back-button {
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .detail-category {
+  background-color: #1e293b !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-theme .detail-divider,
+body.dark-theme .filter-section {
+  background-color: transparent !important;
+  border-color: #334155 !important;
+}
+
+body.dark-theme .artikel-image-skeleton,
+body.dark-theme .detail-image-skeleton,
+body.dark-theme .skeleton-pill,
+body.dark-theme .skeleton-title,
+body.dark-theme .skeleton-line {
+  background-color: #334155 !important;
+}
+
+body.dark-theme .panduan-header-bg {
+  background-image: linear-gradient(to right, #1e3a5f, #0f172a) !important;
+}
+
+body.dark-theme .guide-list li {
+  color: #cbd5e1 !important;
+}
+
+/* ===================================================
+   PANDUAN BADGE CLASSES
+   =================================================== */
+
+.badge-blue { background-color: #d0eaf8; }
+.badge-red { background-color: #ffe4e6; }
+.badge-yellow { background-color: #fff3cd; }
+.badge-green { background-color: #d4edda; }
+.badge-purple { background-color: #ede9fe; }
+.badge-cyan { background-color: #cffafe; }
+
+body.dark-theme .badge-blue,
+body.dark-theme .badge-red,
+body.dark-theme .badge-yellow,
+body.dark-theme .badge-green,
+body.dark-theme .badge-purple,
+body.dark-theme .badge-cyan {
+  background-color: #0f172a !important;
+  color: #38bdf8 !important;
+  border: 1px solid #334155 !important;
+}
+
+.panduan-category-badge {
+  background-color: #f4f8fb;
+  color: #1a6a8a;
+}
+
+body.dark-theme .panduan-category-badge {
+  background-color: #1e293b !important;
+  color: #38bdf8 !important;
+  border: 1px solid #334155 !important;
+}
+
+/* ===================================================
+   DARK THEME — USER MAPS (Visualisasi Sumber Air)
+   =================================================== */
+
+/* Stat cards */
+body.dark-theme .statCard,
+body.dark-theme [class*="statCard"] {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+body.dark-theme [class*="statLabel"] {
+  color: #94a3b8 !important;
+}
+
+/* Filter section */
+body.dark-theme [class*="filterSection"] {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+body.dark-theme [class*="filterStatusWrapper"] {
+  border-top-color: #334155 !important;
+}
+body.dark-theme [class*="checkboxLabel"] {
+  color: #cbd5e1 !important;
+}
+body.dark-theme [class*="infoText"] {
+  color: #94a3b8 !important;
+}
+body.dark-theme [class*="searchInput"] {
+  background-color: #0f172a !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+body.dark-theme [class*="filterSelect"] {
+  background-color: #0f172a !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+body.dark-theme [class*="resetBtn"] {
+  background-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+/* Map card */
+body.dark-theme [class*="mapCard"] {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+body.dark-theme [class*="mapHint"] {
+  color: #94a3b8 !important;
+}
+
+/* Legend peta user */
+body.dark-theme [class*="mapLegend"] {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border-color: #334155 !important;
+}
+body.dark-theme [class*="mapLegend"] h4 {
+  color: #e2e8f0 !important;
+  border-bottom-color: #334155 !important;
+}
+body.dark-theme [class*="legendText"] {
+  color: #cbd5e1 !important;
+}
+
+/* Tabel user */
+body.dark-theme [class*="tableWrapper"] {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+body.dark-theme [class*="tableHeader"] {
+  background-color: #1e293b !important;
+  border-bottom-color: #334155 !important;
+  color: #e2e8f0 !important;
+}
+body.dark-theme [class*="locationTable"] thead th {
+  background-color: #0f172a !important;
+  color: #94a3b8 !important;
+  border-bottom-color: #334155 !important;
+}
+body.dark-theme [class*="locationTable"] tbody td {
+  color: #cbd5e1 !important;
+  border-bottom-color: #1e293b !important;
+}
+body.dark-theme [class*="locationTable"] tbody tr:hover {
+  background-color: #334155 !important;
+}
+body.dark-theme [class*="tableNama"] {
+  color: #e2e8f0 !important;
+}
+body.dark-theme [class*="tableAlamat"] {
+  color: #94a3b8 !important;
+}
+body.dark-theme [class*="tableTipe"] {
+  color: #cbd5e1 !important;
+}
+body.dark-theme [class*="navigateSmBtn"] {
+  background-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+body.dark-theme [class*="navigateSmBtn"]:hover {
+  background-color: #0369a1 !important;
+  color: white !important;
+}
+
+/* Nearest section */
+body.dark-theme [class*="nearestSection"] {
+  background-color: #1e293b !important;
+  border-left-color: #ef4444 !important;
+}
+body.dark-theme [class*="nearestHeader"] {
+  background-color: #2d1515 !important;
+  border-bottom-color: #450a0a !important;
+}
+body.dark-theme [class*="nearestItemTerdekat"] {
+  background: linear-gradient(90deg, #2d1515, #1e293b) !important;
+}
+body.dark-theme [class*="nearestItemBiasa"] {
+  background-color: #1e293b !important;
+}
+body.dark-theme [class*="nearestItem"] {
+  border-bottom-color: #334155 !important;
+}
+body.dark-theme [class*="nearestName"] {
+  color: #e2e8f0 !important;
+}
+body.dark-theme [class*="nearestAddress"],
+body.dark-theme [class*="nearestTipe"],
+body.dark-theme [class*="nearestStatus"] {
+  color: #94a3b8 !important;
+}
+body.dark-theme [class*="nearestDistance"] {
+  color: #38bdf8 !important;
+}
+
+/* Modal detail user */
+body.dark-theme [class*="modalContainer"] {
+  background-color: #1e293b !important;
+}
+body.dark-theme [class*="modalHeader"] {
+  background-color: #0f172a !important;
+  border-bottom-color: #334155 !important;
+}
+body.dark-theme [class*="modalHeader"] h2 {
+  color: #e2e8f0 !important;
+}
+body.dark-theme [class*="modalBody"] {
+  color: #cbd5e1 !important;
+}
+body.dark-theme [class*="modalField"] label {
+  color: #94a3b8 !important;
+}
+body.dark-theme [class*="modalField"] p {
+  color: #cbd5e1 !important;
+}
+body.dark-theme [class*="modalFieldValue"] {
+  color: #38bdf8 !important;
+}
+body.dark-theme [class*="modalClose"] {
+  color: #94a3b8 !important;
+}
+
+/* ===================================================
+   DARK THEME — ADMIN MAPS (Pengelolaan Lokasi Air)
+   =================================================== */
+
+/* Container & header */
+body.dark-theme .admin-maps-container {
+  background-color: #0f172a !important;
+}
+body.dark-theme .admin-title {
+  color: #e2e8f0 !important;
+}
+body.dark-theme .admin-subtitle {
+  color: #94a3b8 !important;
+}
+
+/* Stat cards admin */
+body.dark-theme .stat-card {
+  background-color: #1e293b !important;
+}
+body.dark-theme .stat-label {
+  color: #94a3b8 !important;
+}
+
+/* Map section & table section admin */
+body.dark-theme .map-section,
+body.dark-theme .table-section {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+body.dark-theme .section-header h2 {
+  color: #e2e8f0 !important;
+}
+body.dark-theme .section-hint {
+  background-color: #0f172a !important;
+  color: #94a3b8 !important;
+}
+body.dark-theme .map-wrapper {
+  border-color: #334155 !important;
+}
+
+/* Filter bar admin */
+body.dark-theme .search-box input {
+  background-color: #0f172a !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+body.dark-theme .filter-select {
+  background-color: #0f172a !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+
+/* Tabel lokasi admin */
+body.dark-theme .location-table th {
+  background-color: #0f172a !important;
+  color: #94a3b8 !important;
+  border-bottom-color: #334155 !important;
+}
+body.dark-theme .location-table td {
+  color: #cbd5e1 !important;
+  border-bottom-color: #334155 !important;
+}
+body.dark-theme .location-table tr:hover {
+  background-color: #334155 !important;
+}
+body.dark-theme .location-name {
+  color: #38bdf8 !important;
+}
+body.dark-theme .location-address,
+body.dark-theme .location-coord {
+  color: #94a3b8 !important;
+}
+body.dark-theme .tipe-badge {
+  background-color: #0f172a !important;
+  color: #cbd5e1 !important;
+}
+
+/* Action buttons admin */
+body.dark-theme .edit-btn {
+  background-color: #0c2a3d !important;
+  color: #38bdf8 !important;
+}
+body.dark-theme .delete-btn {
+  background-color: #450a0a !important;
+  color: #fca5a5 !important;
+}
+body.dark-theme .btn-add-location {
+  background-color: #0369a1 !important;
+  color: #e2e8f0 !important;
+}
+
+/* Add form admin */
+body.dark-theme .add-location-card {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+body.dark-theme .card-header {
+  background-color: #1e293b !important;
+  border-bottom-color: #334155 !important;
+}
+body.dark-theme .card-header h1 {
+  color: #e2e8f0 !important;
+}
+body.dark-theme .card-header p {
+  color: #94a3b8 !important;
+}
+body.dark-theme .form-group label {
+  color: #94a3b8 !important;
+}
+body.dark-theme .form-group input,
+body.dark-theme .form-group select,
+body.dark-theme .form-group textarea {
+  background-color: #0f172a !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+body.dark-theme .btn-cancel {
+  background-color: transparent !important;
+  color: #38bdf8 !important;
+  border-color: #38bdf8 !important;
+}
+body.dark-theme .btn-submit {
+  background-color: #0369a1 !important;
+  color: #e2e8f0 !important;
+}
+
+/* Edit modal admin */
+body.dark-theme .edit-modal-box {
+  background-color: #1e293b !important;
+}
+body.dark-theme .modal-header {
+  background-color: #1e293b !important;
+  border-bottom-color: #334155 !important;
+}
+body.dark-theme .modal-header h3 {
+  color: #e2e8f0 !important;
+}
+body.dark-theme .modal-close {
+  color: #94a3b8 !important;
+}
+
+/* Delete modal admin */
+body.dark-theme .delete-modal {
+  background-color: #1e293b !important;
+}
+body.dark-theme .delete-title {
+  color: #e2e8f0 !important;
+}
+body.dark-theme .delete-message {
+  color: #94a3b8 !important;
+}
+body.dark-theme .delete-location-name {
+  color: #cbd5e1 !important;
+}
+body.dark-theme .delete-actions {
+  border-top-color: #334155 !important;
+}
+body.dark-theme .delete-cancel-btn {
+  background-color: #1e293b !important;
+  color: #cbd5e1 !important;
+}
+body.dark-theme .delete-cancel-btn:hover {
+  background-color: #334155 !important;
+}
+
+/* Legend & popup map admin */
+body.dark-theme .map-legend-custom {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border-color: #334155 !important;
+}
+body.dark-theme .map-legend-custom h4 {
+  color: #e2e8f0 !important;
+  border-bottom-color: #334155 !important;
+}
+body.dark-theme .map-legend-custom span {
+  color: #cbd5e1 !important;
+}
+
+/* Empty & loading admin */
+body.dark-theme .empty-table p {
+  color: #94a3b8 !important;
+}
+body.dark-theme .loading-spinner {
+  border-color: #334155 !important;
+  border-top-color: #38bdf8 !important;
+}
+
+/* Form warning */
+body.dark-theme .modal-form .form-warning {
+  background-color: #2d2000 !important;
+  color: #fbbf24 !important;
+  border-left-color: #f59e0b !important;
+}
