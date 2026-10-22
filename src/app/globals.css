@@ -116,7 +116,7 @@ body.dark-theme input[type="password"] {
 body.dark-theme input::placeholder { color: #64748b !important; }
 
 /* ---- Control bar wrapper ---- */
-body.dark-theme .flex.flex-col.xl\\:flex-row.bg-white {
+body.dark-theme .flex.flex-col.xl\:flex-row.bg-white {
   background-color: #1e293b !important;
   border-color: #334155 !important;
 }

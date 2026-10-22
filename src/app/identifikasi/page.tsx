@@ -1,6 +1,6 @@
 "use client";
 
-import "./Identifikasi.css";
+import "./identifikasi.css";
 
 import { useState } from "react";
 
